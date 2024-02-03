@@ -2,7 +2,7 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 User = get_user_model
 
-from .models import (PetProfile, Match, Message, 
+from .models import (PetProfile, Match, Message,
                      ESAOpportunity, ESARegistration, PetBehaviorLog)
 
 

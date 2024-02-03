@@ -19,6 +19,13 @@ class Match(models.Model):
     status = models.CharField(max_length=10)  # e.g., 'Liked', 'Matched'
     timestamp = models.DateTimeField(auto_now_add=True)
 
+class Message(models.Model):
+    match = models.ForeignKey(Match, on_delete=models.CASCADE, related_name='messages')
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_messages')
+    recipient = models.ForeignKey(User, on_delete=models.CASCADE, related_name='received_messages')
+    message_text = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+
 class ESAOpportunity(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True)
